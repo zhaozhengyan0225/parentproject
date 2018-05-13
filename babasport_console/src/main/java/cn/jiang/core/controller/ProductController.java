@@ -47,7 +47,6 @@ public class ProductController {
 		}else {
 			model.addAttribute("isShow", false);
 		}
-		
 		return "product/list";
 	}
 	
