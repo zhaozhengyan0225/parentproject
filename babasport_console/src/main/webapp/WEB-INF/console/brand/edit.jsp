@@ -36,16 +36,17 @@
 			<tbody>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
-						<span class="pn-frequired">*</span>
-						品牌名称:</td><td width="80%" class="pn-fcontent">
+						<span class="pn-frequired">*</span>品牌名称:
+					</td>
+					<td width="80%" class="pn-fcontent">
 						<input type="text" class="required" name="name" value="${brand.name }" maxlength="100"/>
 					</td>
 				</tr>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
-						<span class="pn-frequired">*</span>
-						上传商品图片(90x150尺寸):</td>
-						<td width="80%" class="pn-fcontent">
+						<span class="pn-frequired">*</span>上传商品图片(90x150尺寸):
+					</td>
+					<td width="80%" class="pn-fcontent">
 						注:该尺寸图片必须为90x150。
 					</td>
 				</tr>
@@ -71,7 +72,9 @@
 				</tr>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
-						是否可用:</td><td width="80%" class="pn-fcontent">
+						是否可用:
+					</td>
+					<td width="80%" class="pn-fcontent">
 						<input type="radio" name="isDisplay" value="1" <c:if test="${brand.isDisplay == 1}">checked="checked"</c:if>/>可用
 						<input type="radio" name="isDisplay" value="0" <c:if test="${brand.isDisplay == 0}">checked="checked"</c:if>/>不可用
 					</td>

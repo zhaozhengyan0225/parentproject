@@ -2,6 +2,7 @@ package cn.jiang.core.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -32,6 +33,18 @@ public class UploadController {
 	@Autowired
 	private UploadService uploadService;
 	//上传图片
+	/*
+	@RequestMapping(value = "/upload/uploadPic.do")
+	@ResponseBody
+	public Map<String,Object> uploadPic(@RequestParam(required = false) MultipartFile pic) throws IOException{
+		
+		String path = uploadService.uploadPic(pic.getBytes(), pic.getOriginalFilename(), pic.getSize());
+		String url = Constants.IMG_URL + path;
+		Map<String,Object> hashMap = new HashMap<>();
+		hashMap.put("url", url);
+		return hashMap;
+	}
+	*/
 	@RequestMapping(value = "/upload/uploadPic.do")
 	public void uploadPic(@RequestParam(required = false) MultipartFile pic,HttpServletResponse response) throws IOException{
 		

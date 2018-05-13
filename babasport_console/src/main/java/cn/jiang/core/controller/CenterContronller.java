@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/control")
 public class CenterContronller {
 
-	// 入口  http://localhost:8080/control/index.do
+	// 入口  http://localhost:8880/control/index.do
 	@RequestMapping(value = "/index.do")
 	public String index(Model model) {
 

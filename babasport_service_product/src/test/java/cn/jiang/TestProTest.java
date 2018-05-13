@@ -44,7 +44,7 @@ public class TestProTest {
 	@Test
 	public void testAdd2() throws Exception {
 		TestPro testPro = new TestPro();
-		testPro.setName("事务");
+		testPro.setName("事务分解机");
 		testPro.setBirthday(new Date());
 		
 		testProService.insertTestPro(testPro);
