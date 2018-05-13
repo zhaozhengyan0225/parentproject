@@ -32,7 +32,6 @@ public class BrandController {
 		} else {
 			model.addAttribute("isDisplay", 1);
 		}
-
 		return "brand/list";
 	}
 
