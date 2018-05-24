@@ -25,7 +25,7 @@ public class BrandServiceImpl implements BrandService{
 	//查询分页对象
 	public Pagination selectPaginationByQuery(String name,Integer isDisplay,Integer pageNo){
 		BrandQuery brandQuery = new BrandQuery();
-		//当前页
+		//当前页,一旦发现pageNo为空或者小于1，设置为1
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		//每页数
 		brandQuery.setPageSize(3);

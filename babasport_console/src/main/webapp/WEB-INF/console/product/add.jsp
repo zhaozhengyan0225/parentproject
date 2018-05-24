@@ -31,10 +31,14 @@ a {
 $(function(){
 	var tObj;
 	$("#tabs a").each(function(){
-		if($(this).attr("class").indexOf("here") == 0){tObj = $(this)}
+		if($(this).attr("class").indexOf("here") == 0){
+			tObj = $(this);
+		}
 		$(this).click(function(){
 			var c = $(this).attr("class");
-			if(c.indexOf("here") == 0){return;}
+			if(c.indexOf("here") == 0){
+				return;
+			}
 			var ref = $(this).attr("ref");
 			var ref_t = tObj.attr("ref");
 			tObj.attr("class","nor");
@@ -96,12 +100,14 @@ function uploadPic(){
 	</form>
 	<div class="clear"></div>
 </div>
-<h2 class="h2_ch"><span id="tabs">
-<a href="javascript:void(0);" ref="#tab_1" title="基本信息" class="here">基本信息</a>
-<a href="javascript:void(0);" ref="#tab_2" title="商品图片" class="nor">商品图片</a>
-<a href="javascript:void(0);" ref="#tab_3" title="商品描述" class="nor">商品描述</a>
-<a href="javascript:void(0);" ref="#tab_4" title="包装清单" class="nor">包装清单</a>
-</span></h2>
+<h2 class="h2_ch">
+	<span id="tabs">
+		<a href="javascript:void(0);" ref="#tab_1" title="基本信息" class="here">基本信息</a>
+		<a href="javascript:void(0);" ref="#tab_2" title="商品图片" class="nor">商品图片</a>
+		<a href="javascript:void(0);" ref="#tab_3" title="商品描述" class="nor">商品描述</a>
+		<a href="javascript:void(0);" ref="#tab_4" title="包装清单" class="nor">包装清单</a>
+	</span>
+</h2>
 <div class="body-box" style="float:right">
 	<form id="jvForm" action="add.do" method="post" enctype="multipart/form-data">
 		<table cellspacing="1" cellpadding="2" width="100%" border="0" class="pn-ftable">
@@ -179,14 +185,15 @@ function uploadPic(){
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						<span class="pn-frequired">*</span>
-						上传商品图片(90x150尺寸):</td>
-						<td width="80%" class="pn-fcontent">
+						上传商品图片(90x150尺寸):
+					</td>
+					<td width="80%" class="pn-fcontent">
 						注:该尺寸图片必须为90x150。
 					</td>
 				</tr>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h"></td>
-						<td width="80%" class="pn-fcontent">
+					<td width="80%" class="pn-fcontent">
 						<input type="file" onchange="uploadPic()" name="pics" multiple="multiple"/>
 					</td>
 				</tr>
