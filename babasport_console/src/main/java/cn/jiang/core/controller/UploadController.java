@@ -58,7 +58,8 @@ public class UploadController {
 	}
 	//上传多张图片
 	@RequestMapping(value = "/upload/uploadPics.do")
-	public @ResponseBody List<String> uploadPics(@RequestParam(required = false) MultipartFile[] pics,HttpServletResponse response) throws IOException{
+	@ResponseBody
+	public List<String> uploadPics(@RequestParam(required = false) MultipartFile[] pics,HttpServletResponse response) throws IOException{
 		
 		List<String> urls = new ArrayList<String>();
 		for (MultipartFile pic : pics) {

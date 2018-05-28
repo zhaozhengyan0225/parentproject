@@ -25,7 +25,7 @@ public class BrandServiceImpl implements BrandService{
 	//查询分页对象
 	public Pagination selectPaginationByQuery(String name,Integer isDisplay,Integer pageNo){
 		BrandQuery brandQuery = new BrandQuery();
-		//当前页
+		//当前页,一旦发现pageNo为空或者小于1，设置为1
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		//每页数
 		brandQuery.setPageSize(3);
@@ -59,19 +59,16 @@ public class BrandServiceImpl implements BrandService{
 
 	@Override
 	public Brand selectBrandById(Long id) {
-		
 		return brandDao.selectBrandById(id);
 	}
 
 	@Override
 	public void updateBrandById(Brand brand) {
-		// TODO Auto-generated method stub
 		brandDao.updateBrandById(brand);
 	}
 
 	@Override
 	public void deletes(Long[] ids) {
-		// TODO Auto-generated method stub
 		brandDao.deletes(ids);
 	}
 
@@ -79,7 +76,6 @@ public class BrandServiceImpl implements BrandService{
 	public List<Brand> selectBrandListByQuery(Integer isDisplay) {
 		BrandQuery brandQuery = new BrandQuery();
 		brandQuery.setIsDisplay(isDisplay);
-		// TODO Auto-generated method stub
 		return brandDao.selectBrandListByQuery(brandQuery);
 	}
 }

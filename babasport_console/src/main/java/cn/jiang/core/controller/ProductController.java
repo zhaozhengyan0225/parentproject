@@ -58,6 +58,7 @@ public class ProductController {
 		List<Brand> brands = brandService.selectBrandListByQuery(1);
 		model.addAttribute("brands", brands);
 		
+		
 		List<Color> colors = productService.selectColorList();
 		model.addAttribute("colors", colors);
 		return "product/add";
