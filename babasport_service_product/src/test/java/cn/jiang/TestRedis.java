@@ -1,7 +1,5 @@
 package cn.jiang;
 
-import static org.junit.Assert.*;
-
 import java.util.Iterator;
 import java.util.Set;
 

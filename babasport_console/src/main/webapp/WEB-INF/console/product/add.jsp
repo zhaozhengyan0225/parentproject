@@ -215,7 +215,8 @@ function uploadPic(){
 			<tbody>
 				<tr>
 					<td class="pn-fbutton" colspan="2">
-						<input type="submit" class="submit" value="提交"/> &nbsp; <input type="reset" class="reset" value="重置"/>
+						<input type="submit" class="submit" value="提交"/> &nbsp; 
+						<input type="reset" class="reset" value="重置"/>
 					</td>
 				</tr>
 			</tbody>
