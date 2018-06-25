@@ -78,9 +78,21 @@ public class Product implements Serializable {
      * 添加时间
      */
     private Date createTime;
+    /**
+     * 最低商品价格
+     */
+    private Float price;
     
     
-    //附加方法，获取第一张图片
+    public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	//附加方法，获取第一张图片
     public String[] getImages(){
     	return imgUrl.split(",");
     }

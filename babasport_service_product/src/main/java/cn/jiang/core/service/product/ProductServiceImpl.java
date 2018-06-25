@@ -3,6 +3,8 @@ package cn.jiang.core.service.product;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,7 @@ import cn.jiang.core.bean.product.Product;
 import cn.jiang.core.bean.product.ProductQuery;
 import cn.jiang.core.bean.product.ProductQuery.Criteria;
 import cn.jiang.core.bean.product.Sku;
+import cn.jiang.core.bean.product.SkuQuery;
 import cn.jiang.core.dao.product.ColorDao;
 import cn.jiang.core.dao.product.ProductDao;
 import cn.jiang.core.dao.product.SkuDao;
@@ -36,6 +39,8 @@ public class ProductServiceImpl implements ProductService{
 	private SkuDao skuDao;
 	@Autowired
 	private Jedis jedis;
+	@Autowired
+	private SolrServer solrServer;
 	
 	//分页对象
 	@Override
@@ -142,7 +147,33 @@ public class ProductServiceImpl implements ProductService{
 			//更该商品状态
 			productDao.updateByPrimaryKeySelective(product);
 			//TODO 保存商品信息到SOLr服务器
-			
+			SolrInputDocument doc = new SolrInputDocument();
+			//商品ID 
+			doc.setField("id", id);
+			//商品名称  ik
+			Product p = productDao.selectByPrimaryKey(id);
+			doc.setField("name_ik", p.getName());
+			//图片
+			doc.setField("url", p.getImages()[0]);
+			//价格 售价   select price from bbs_sku where product_id =442 order by price asc limit 0,1
+			SkuQuery skuQuery = new SkuQuery();
+			skuQuery.createCriteria().andProductIdEqualTo(id);
+			skuQuery.setOrderByClause("price asc");
+			skuQuery.setPageNo(1);
+			skuQuery.setPageSize(1);
+			skuQuery.setFields("price");
+			List<Sku> skus = skuDao.selectByExample(skuQuery);
+			doc.setField("price", skus.get(0).getPrice());
+			//品牌ID Long
+			doc.setField("brandId", p.getBrandId());
+			//时间  可选
+			try {
+				solrServer.add(doc);
+				solrServer.commit();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			//TODO 静态化
 		}
 	}
