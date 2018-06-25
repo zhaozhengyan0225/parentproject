@@ -47,5 +47,6 @@ public class TestRedis {
 			String string = jedis.get(key);
 			System.out.println("value--------->"+string);
 		}
+		jedis.close();
 	}
 }
