@@ -28,10 +28,25 @@ public class TestProTest {
 	@Test
 	public void testAdd() throws Exception {
 		TestPro testPro = new TestPro();
-		testPro.setName("范冰冰");
-		testPro.setBirthday(new Date());
+
+		testPro.setName("神经病");
+		testPro.setBirthday(null);
 		
 		testProDao.insertTb(testPro);
+	}
+	@Test
+	public void testUpdat() throws Exception {
+		TestPro testPro = new TestPro();
+
+		testPro.setId(12);
+		testPro.setName("神经病");
+		testPro.setBirthday(new Date());
+
+		testProDao.updateTb(testPro);
+
+		testPro.setBirthday(null);
+
+		testProDao.updateTb(testPro);
 	}
 	@Test
 	public void testAdd1() throws Exception {

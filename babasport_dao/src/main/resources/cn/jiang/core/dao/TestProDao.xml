@@ -8,4 +8,10 @@
 		values
 		(#{id},#{name},#{birthday})
 	</insert>
+	<update id="updateTb" parameterType="TestPro" >
+		update test_pro
+		set name = #{name},
+      		birthday = #{birthday}
+      	where id = #{id}
+	</update>
 </mapper>

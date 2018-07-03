@@ -27,13 +27,14 @@ public class TestSolr {
 	
 	@Test
 	public void testSolrJ() throws Exception {
-		String baseURL = "http://192.168.200.128:8080/solr";
+		String baseURL = "http://123.207.148.28:8080/solr";
 		SolrServer solrServer = new HttpSolrServer(baseURL);
 		
 		SolrInputDocument doc = new SolrInputDocument();
 		doc.setField("id", 15);
-		doc.setField("name", "花花世界");
-		
+		doc.setField("name", "花花世界就好看不是打飞机客户说");
+		doc.setField("brandId", "19");
+
 		solrServer.add(doc);
 		solrServer.commit();
 	}

@@ -10,4 +10,6 @@ import cn.jiang.core.bean.TestPro;
 public interface TestProDao {
 	//保存
 	public void insertTb(TestPro testPro);
+
+	int updateTb(TestPro testPro);
 }
