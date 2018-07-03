@@ -33,7 +33,6 @@
 		
 		var url = "/sku/addSku.do";
 		var params = {"marketPrice":m,"price":p,"stock":s,"upperLimit":l,"deliveFee":f,"id":skuId};
-		
 		$.post(url,params,function(data){
 			alert(data.message);
 		},"json");
@@ -76,7 +75,10 @@
 					<td align="center"><input type="text" id="l${sku.id}" value="${sku.upperLimit}" disabled="disabled" size="10"/></td>
 					<td align="center"><input type="text" id="f${sku.id}" value="${sku.deliveFee}" disabled="disabled" size="10"/></td>
 					<td align="center">不是</td>
-					<td align="center"><a href="javascript:updateSku('${sku.id}')" class="pn-opt">修改</a> | <a href="javascript:addSku('${sku.id}')" class="pn-opt">保存</a></td>
+					<td align="center">
+						<a href="javascript:updateSku('${sku.id}')" class="pn-opt">修改</a> | 
+						<a href="javascript:addSku('${sku.id}')" class="pn-opt">保存</a>
+					</td>
 				</tr>
 		</c:forEach>
 	</tbody>

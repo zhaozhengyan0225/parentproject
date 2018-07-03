@@ -79,7 +79,9 @@ function isShow(){
 					<c:if test="${isShow}">上架</c:if>
 				</td>
 				<td align="center">
-				<a href="#" class="pn-opt">查看</a> | <a href="#" class="pn-opt">修改</a> | <a href="#" onclick="if(!confirm('您确定删除吗？')) {return false;}" class="pn-opt">删除</a> | <a href="/sku/list.do?productId=${product.id }" class="pn-opt">库存</a>
+					<a href="#" class="pn-opt">查看</a> | <a href="#" class="pn-opt">修改</a> | 
+					<a href="#" onclick="if(!confirm('您确定删除吗？')) {return false;}" class="pn-opt">删除</a> | 
+					<a href="/sku/list.do?productId=${product.id }" class="pn-opt">库存</a>
 				</td>
 			</tr>
 		</c:forEach>
@@ -92,7 +94,11 @@ function isShow(){
 		</c:forEach>
 	</span>
 </div>
-<div style="margin-top:15px;"><input class="del-button" type="button" value="删除" onclick="optDelete();"/><input class="add" type="button" value="上架" onclick="isShow();"/><input class="del-button" type="button" value="下架" onclick="isHide();"/></div>
+<div style="margin-top:15px;">
+	<input class="del-button" type="button" value="删除" onclick="optDelete();"/>
+	<input class="add" type="button" value="上架" onclick="isShow();"/>
+	<input class="del-button" type="button" value="下架" onclick="isHide();"/>
+</div>
 </form>
 </div>
 </body>

@@ -1,7 +1,5 @@
 package cn.jiang;
 
-import static org.junit.Assert.*;
-
 import java.util.Iterator;
 import java.util.Set;
 
@@ -49,5 +47,6 @@ public class TestRedis {
 			String string = jedis.get(key);
 			System.out.println("value--------->"+string);
 		}
+		jedis.close();
 	}
 }
