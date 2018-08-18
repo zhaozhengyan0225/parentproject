@@ -21,6 +21,7 @@ import cn.jiang.core.dao.product.ColorDao;
 import cn.jiang.core.dao.product.ProductDao;
 import cn.jiang.core.dao.product.SkuDao;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 /**
  * 商品
@@ -37,8 +38,10 @@ public class ProductServiceImpl implements ProductService{
 	private ColorDao colorDao;
 	@Autowired
 	private SkuDao skuDao;
+//	@Autowired
+//	private Jedis jedis;
 	@Autowired
-	private Jedis jedis;
+	private JedisPool jedisPool;
 	@Autowired
 	private SolrServer solrServer;
 	
@@ -92,7 +95,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void insertProduct(Product product) {
 		//设置商品ID
-		Long id = jedis.incr("pno");
+		Long id = jedisPool.getResource().incr("pno");
 		product.setId(id);
 		//下架状态
 		product.setIsShow(false);

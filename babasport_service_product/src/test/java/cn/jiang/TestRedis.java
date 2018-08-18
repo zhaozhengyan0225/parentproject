@@ -10,12 +10,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context.xml"})
 public class TestRedis {
 	@Autowired
 	private Jedis jedis;
+
+
+    @Autowired
+    private JedisPool jedisPool;
 	
 	@Test
 	public void testSpringJedis() throws Exception {
@@ -25,7 +31,7 @@ public class TestRedis {
 	
 	@Test
 	public void testRedis() throws Exception {
-		Jedis jedis = new Jedis("192.168.200.128",6379);
+		Jedis jedis = new Jedis("192.168.200.150",6379);
 		Long pno = jedis.incr("pno");
 		System.out.println(pno);
 		
@@ -49,4 +55,25 @@ public class TestRedis {
 		}
 		jedis.close();
 	}
+	@Test
+	public void testRedisPool() throws Exception {
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig,"192.168.200.150", 6379, 60, "654321");
+        Jedis jedis = jedisPool.getResource();
+        jedis.set("pno", "1000");
+
+        System.out.println(jedis.get("pno"));
+
+		jedis.close();
+	}
+
+    @Test
+    public void testRedisPoolAutowired() throws Exception {
+        Jedis jedis = jedisPool.getResource();
+//        jedis.set("pno", "1000");
+
+        System.out.println(jedis.get("pno"));
+
+        jedis.close();
+    }
 }
